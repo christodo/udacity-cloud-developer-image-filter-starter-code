@@ -23,7 +23,7 @@ const { query, validationResult } = require('express-validator');
       return res.status(400).json({ errors: errors.array() });
     }
     filterImageFromURL(req.query.image_url).then((img) => {
-      res.sendFile(img,() => {
+      res.status(200).sendFile(img,() => {
         deleteLocalFiles([img]);
       });
     });
